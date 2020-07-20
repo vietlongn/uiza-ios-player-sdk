@@ -351,18 +351,18 @@ open class UZPlayer: UIView {
 	- parameter url: URL of linkplay
 	- parameter subtitleURLs: URLs of subtitle if any
 	*/
-	@objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) {
-		let linkPlay = UZVideoLinkPlay(definition: "", url: url)
-		let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
-		loadVideo(item)
-	}
+	// open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) {
+	// 	let linkPlay = UZVideoLinkPlay(definition: "", url: url)
+	// 	let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
+	// 	loadVideo(item)
+	// }
 	
 	/**
 	Play an `UZVideoItem`
 	
 	- parameter video: UZVideoItem
 	*/
-	@objc open func loadVideo(_ video: UZVideoItem) {
+	open func loadVideo(_ video: UZVideoItem) {
 		UZLogger.shared.log(event: "loadstart")
 		if currentVideo != nil {
 			stop()
