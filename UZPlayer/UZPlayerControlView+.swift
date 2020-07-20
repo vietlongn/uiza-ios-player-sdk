@@ -36,7 +36,7 @@ public enum UZButtonTag: Int {
 }
 
 
-public protocol UZPlayerTheme: class {
+public protocol UZPlayerTheme: class, NSObjectProtocol {
 	var id: String { get set }
     var controlView: UZPlayerControlView? { get set }
     func updateUI()
