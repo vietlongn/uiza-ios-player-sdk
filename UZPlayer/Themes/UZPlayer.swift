@@ -80,7 +80,7 @@ extension UZPlayerControlViewDelegate {
 	func controlView(controlView: UZPlayerControlView, slider: UISlider, onSliderEvent event: UIControl.Event) {}
 }
 
-open class UZPlayer: UIView {
+open class UZPlayer: NSObject, UIView {
 	static public let ShowAirPlayDeviceListNotification = Notification.Name(rawValue: "ShowAirPlayDeviceListNotification")
 	open weak var delegate: UZPlayerDelegate?
 	
@@ -316,7 +316,7 @@ open class UZPlayer: UIView {
 	public var autoPauseWhenInactive = true
 	
 	// MARK: -
-	public init() {
+	public override init() {
 		super.init(frame: .zero)
 		
 		setupUI()
