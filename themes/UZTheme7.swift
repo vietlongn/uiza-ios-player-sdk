@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import FrameLayoutKit
 
-open class UZTheme7: UZPlayerTheme {
+open class UZTheme7: NSObject, UZPlayerTheme {
 	public var id = "UZTheme7"
 	public weak var controlView: UZPlayerControlView?
 	
@@ -36,7 +36,7 @@ open class UZTheme7: UZPlayerTheme {
 		self.seekThumbSize = seekThumbSize
 	}
 	
-	public init() {
+	public override init() {
 		
 	}
 	

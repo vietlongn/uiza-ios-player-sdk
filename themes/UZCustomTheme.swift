@@ -9,7 +9,7 @@
 import UIKit
 import UizaSDK
 
-open class UZCustomTheme: UZPlayerTheme {
+open class UZCustomTheme: NSObject, UZPlayerTheme {
 	// player will set this value automatically, you can access to all button controls inside this view
 	public weak var controlView: UZPlayerControlView? = nil
 	

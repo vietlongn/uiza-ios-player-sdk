@@ -34,7 +34,7 @@ open class UZTheme7: NSObject, UZPlayerTheme {
 		self.seekThumbSize = seekThumbSize
 	}
 	
-	public init() {
+	public override init() {
 		
 	}
 	
