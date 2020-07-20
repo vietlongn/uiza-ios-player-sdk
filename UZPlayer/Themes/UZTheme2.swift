@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import FrameLayoutKit
 
-open class UZTheme2: UZPlayerTheme {
+open class UZTheme2: UZPlayerTheme, NSObject {
 	public var id = "UZTheme2"
 	public weak var controlView: UZPlayerControlView?
 	
