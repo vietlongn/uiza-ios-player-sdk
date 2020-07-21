@@ -80,7 +80,7 @@ extension UZPlayerControlViewDelegate {
 	func controlView(controlView: UZPlayerControlView, slider: UISlider, onSliderEvent event: UIControl.Event) {}
 }
 
-open class UZPlayer: UIView {
+@objc open class UZPlayer: UIView {
 	static public let ShowAirPlayDeviceListNotification = Notification.Name(rawValue: "ShowAirPlayDeviceListNotification")
 	open weak var delegate: UZPlayerDelegate?
 	
@@ -351,7 +351,7 @@ open class UZPlayer: UIView {
 	- parameter url: URL of linkplay
 	- parameter subtitleURLs: URLs of subtitle if any
 	*/
-	@objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) {
+	@objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) -> Void {
 		let linkPlay = UZVideoLinkPlay(definition: "", url: url)
 		let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
 		loadVideo(item)
