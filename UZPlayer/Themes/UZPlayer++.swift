@@ -233,7 +233,7 @@ extension UZPlayer {
     @objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) {
 		let linkPlay = UZVideoLinkPlay(definition: "", url: url)
 		let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
-		loadVideo(item)
+		self.loadVideo(item)
 	}
 
     open func sendWatchingLiveEvent(every interval: TimeInterval = 5) {
