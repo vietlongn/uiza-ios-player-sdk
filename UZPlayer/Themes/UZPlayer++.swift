@@ -64,6 +64,56 @@ extension UZPlayer {
     }
 }
 
+// MARK: - loadVideo
+extension UZPlayer {
+	/**
+	Play a video with given URL
+	
+	- parameter url: URL of linkplay
+	- parameter subtitleURLs: URLs of subtitle if any
+	*/
+	@objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) -> Void {
+		let linkPlay = UZVideoLinkPlay(definition: "", url: url)
+		let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
+		loadVideo(item)
+	}
+	
+	/**
+	Play an `UZVideoItem`
+	
+	- parameter video: UZVideoItem
+	*/
+	@objc open func loadVideo(_ video: UZVideoItem) {
+		UZLogger.shared.log(event: "loadstart")
+		if currentVideo != nil {
+			stop()
+			preparePlayer()
+		}
+		currentVideo = video
+		playThroughEventLog = [:]
+		
+		removeSubtitleLabel()
+		controlView.hideMessage()
+		controlView.hideEndScreen()
+		controlView.showControlView()
+		controlView.showLoader()
+		controlView.liveStartDate = nil
+        UZVisualizeSavedInformation.shared.currentVideo = video
+		
+		guard let linkPlay = video.linkPlay else { return }
+		if let host = linkPlay.url.host {
+			UZVisualizeSavedInformation.shared.host = host
+		}
+        let resource = UZPlayerResource(name: video.name ?? "", definitions: [linkPlay], subtitles: video.subtitleURLs, cover: video.thumbnailURL, isLive: video.isLive, timeshiftSupport: video.timeshiftSupport, timeShiftOn: video.isTimeshiftOn)
+        setResource(resource: resource)
+		if video.isLive {
+			controlView.liveStartDate = nil
+			loadLiveViews()
+			sendWatchingLiveEvent()
+		}
+	}
+}
+
 // MARK: - Events
 extension UZPlayer {
 
