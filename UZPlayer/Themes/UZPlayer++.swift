@@ -83,7 +83,7 @@ extension UZPlayer {
 	
 	- parameter video: UZVideoItem
 	*/
-	@objc open func loadVideo(_ video: UZVideoItem) {
+	open func loadVideo(_ video: UZVideoItem) {
 		UZLogger.shared.log(event: "loadstart")
 		if currentVideo != nil {
 			stop()
