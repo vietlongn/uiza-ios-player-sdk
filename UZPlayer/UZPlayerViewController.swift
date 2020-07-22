@@ -14,9 +14,9 @@ public enum UZFullscreenPresentationMode {
 	case fullscreen
 }
 
-open class UZPlayerViewController: UIViewController {
+@objcMembers open class UZPlayerViewController: UIViewController {
 	internal let playerController = UZPlayerController()
-	@objc open var player: UZPlayer {
+	open var player: UZPlayer {
 		get {
 			return playerController.player
 		}

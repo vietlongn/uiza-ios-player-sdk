@@ -72,7 +72,8 @@ extension UZPlayer {
 	- parameter url: URL of linkplay
 	- parameter subtitleURLs: URLs of subtitle if any
 	*/
-	@objc open func loadVideo(url: URL, subtitleURLS: [URL]? = nil) -> Void {
+    @available(iOS 9.0, *)
+	@objc open func loadVideoByUrl(url: URL, subtitleURLS: [URL]? = nil) -> Void {
 		let linkPlay = UZVideoLinkPlay(definition: "", url: url)
 		let item = UZVideoItem(name: "", thumbnailURL: nil, linkPlay: linkPlay, subtitleURLs: subtitleURLS)
 		loadVideo(item)
@@ -83,6 +84,7 @@ extension UZPlayer {
 	
 	- parameter video: UZVideoItem
 	*/
+    @available(iOS 9.0, *)
 	open func loadVideo(_ video: UZVideoItem) {
 		UZLogger.shared.log(event: "loadstart")
 		if currentVideo != nil {

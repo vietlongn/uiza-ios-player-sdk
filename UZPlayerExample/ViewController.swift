@@ -51,7 +51,7 @@ class ViewController: UIViewController {
 		guard let url = URL(string: urlPath) else { return }
 		let playerViewController = UZPlayerViewController()
         playerViewController.player.controlView.theme = UZTheme1()
-        playerViewController.player.loadVideo(url: url)
+        playerViewController.player.loadVideoByUrl(url: url)
         present(playerViewController, animated: true, completion: nil)
 	}
 	
