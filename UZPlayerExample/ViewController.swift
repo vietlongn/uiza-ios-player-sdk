@@ -50,7 +50,8 @@ class ViewController: UIViewController {
 	func presentFloatingPlayer(urlPath: String) {
 		guard let url = URL(string: urlPath) else { return }
 		let playerViewController = UZPlayerViewController()
-        playerViewController.player.controlView.theme = UZTheme1()
+//        playerViewController.player.controlView.theme = UZTheme1()
+        playerViewController.setDefaultTheme()
         playerViewController.player.loadVideoByUrl(url: url)
         present(playerViewController, animated: true, completion: nil)
 	}

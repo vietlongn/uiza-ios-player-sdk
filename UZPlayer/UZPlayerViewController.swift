@@ -39,6 +39,10 @@ public enum UZFullscreenPresentationMode {
 			setFullscreen(fullscreen: newValue)
 		}
 	}
+    
+    @objc open func setDefaultTheme() {
+        player.controlView.theme = UZTheme1();
+     }
 	
 	open func setFullscreen(fullscreen: Bool, completion:(() -> Void)? = nil) {
 		UZLogger.shared.log(event: "fullscreenchange")

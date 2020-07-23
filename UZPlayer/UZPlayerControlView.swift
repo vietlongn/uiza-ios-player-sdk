@@ -9,7 +9,7 @@
 import UIKit
 import FrameLayoutKit
 
-open class UZPlayerControlView: UIView {
+@objcMembers open class UZPlayerControlView: UIView {
 	open weak var delegate: UZPlayerControlViewDelegate?
 	open var autoHideControlsInterval: TimeInterval = 5
 	open var enableTimeshiftForLiveVideo = true
@@ -56,7 +56,7 @@ open class UZPlayerControlView: UIView {
 	open var tapGesture: UITapGestureRecognizer?
 	open var doubleTapGesture: UITapGestureRecognizer?
 	
-	open var theme: UZPlayerTheme? = nil {
+	open var theme: UZPlayerTheme? = UZTheme1() {
 		willSet {
 			cancelAutoFadeOutAnimation()
 			showControlView()
