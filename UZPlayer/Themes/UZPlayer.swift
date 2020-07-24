@@ -80,7 +80,7 @@ extension UZPlayerControlViewDelegate {
 	func controlView(controlView: UZPlayerControlView, slider: UISlider, onSliderEvent event: UIControl.Event) {}
 }
 
-open class UZPlayer: UIView {
+@objcMembers open class UZPlayer: UIView {
 	static public let ShowAirPlayDeviceListNotification = Notification.Name(rawValue: "ShowAirPlayDeviceListNotification")
 	open weak var delegate: UZPlayerDelegate?
 	
@@ -491,6 +491,28 @@ open class UZPlayer: UIView {
 	
 	- parameter to: target time
 	*/
+
+	@objc open func seekTo(to: Double) {
+        let interval = TimeInterval(to)
+		UZLogger.shared.log(event: "seeking")
+		seekCount += 1
+		
+		currentPosition = interval
+		controlView.hideEndScreen()
+		
+		playerLayer?.seek(to: interval, completion: {
+			UZLogger.shared.log(event: "seeked")
+		})
+		
+        #if canImport(GoogleCast)
+		let castingManager = UZCastingManager.shared
+		if castingManager.hasConnectedSession {
+			playerLayer?.pause()
+			castingManager.seek(to: interval)
+		}
+		#endif
+	}
+
 	open func seek(to interval: TimeInterval, completion: (() -> Void)? = nil) {
 		UZLogger.shared.log(event: "seeking")
 		seekCount += 1
